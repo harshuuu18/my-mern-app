@@ -1,57 +1,39 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const path = require("path");
-const mongoose = require("mongoose");
 const port = process.env.PORT || 5000;
+const mongoose = require('mongoose');
+// 7sy74O9wO7qBsMmF
+const{MONGOURI} = require('./config/keys');
 
-app.use(bodyParser.json());
-app.use(cors());
 
-//mongoose
-mongoose.connect("mongodb+srv://admin-marina:marinochka90@cluster0.hr1hl.mongodb.net/moviesDB?retryWrites=true&w=majority")
 
-//data schema and model
-const movieSchema = {
-    title: String,
-    genre: String,
-    year: String
-}
 
-const Movie = mongoose.model("Movie", movieSchema);
+mongoose.connect(MONGOURI,{
+    useNewUrlParser: true,
+    useUnifiedTopology:true
+});
 
-//API routes
-app.get('/movies', function(req, res) {
-    Movie.find().then(movies => res.json(movies));
+mongoose.connection.on('connected',()=>{
+    console.log("Connected to mongo Yeah")
+})
+mongoose.connection.on('error',(err)=>{
+    console.log(`not Connected ${err}`)
 })
 
-//add movie
-app.post('/newmovie', function(req, res) {
-    const title = req.body.title;
-    const genre = req.body.genre;
-    const year = req.body.year;
+require('./models/user');
+require('./models/post')
 
-    const newMovie = new Movie({
-        title,
-        genre,
-        year
-    });
+app.use(express.json());
 
-    newMovie.save();
+app.use(require('./routes/auth'));
 
-});
+app.use(require('./routes/post'));
 
-app.delete('/delete/:id', function(req, res) {
-    const id = req.params.id;
-    Movie.findByIdAndDelete({_id: id}, function(err) {
-        if(!err) {
-            console.log("movie deleted");
-        } else {
-            console.log(err);
-        }
-    })
-});
+
+app.get("/", (req, res) =>{
+    res.send("Hello From The Harsh")
+    
+})
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
@@ -60,6 +42,6 @@ if(process.env.NODE_ENV === 'production') {
     })
 }
 
-app.listen(port, function() {
-    console.log("express is running");
+app.listen(port, ()=>{
+    console.log(`Serve is Running at ${port}`);
 })

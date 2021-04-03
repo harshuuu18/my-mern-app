@@ -1,83 +1,113 @@
-import {useState, useEffect} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import axios from "axios";
+import React,{useEffect,createContext,useReducer,useContext} from 'react'
+import NavBar from './homepage/navbar'
+import InfoBar from './homepage/infoBar'
+import Banner from './homepage/banner'
+import Login from './login/Login.js'
+import SignUp from './signup/signup'
+import AfterLogin from './afterlogin/post'
+import BottomNav from './afterlogin/bottomNav'
+import AllDms from './afterlogin/dm'
+import CreatePost from './createpost/createpost'
+import Profile from './afterlogin/profile'
+import "../src/App.css"
+import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom'
+import {reducer,initialState} from './Reducers/userReduser'
+
+export const UserContext = createContext()
+
+const Routing = () => {
+  const history = useHistory()
+  const {state,dispatch} = useContext(UserContext)
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"))
+    if (user) {
+      dispatch({type:"USER",payload:user})
+      
+    } else {
+      history.push('/home')
+    }
+    
+  },[])
+  return (
+    <Switch>
+    <Route exact path="/" >
+        <AfterLogin />
+
+        <BottomNav />
+        <br />
+        <br />
+        <br />
+        <br />
+
+      </Route>
+
+      <Route path="/signin" >
+        <Login />
+      </Route>
+
+      <Route path="/signup" >
+        <SignUp />
+      </Route>
+
+      <Route path="/home">
+        <Banner />
+        <InfoBar />
+      </Route>
+
+      <Route path="/dms">
+        <br />
+        <br />
+        <br />
+        <br />
+        <AllDms />
+        <AllDms />
+        <AllDms />
+        <BottomNav />
+        <br />
+        <br />
+        <br />
+        <br />
+      </Route>
+
+      <Route path="/createpost">
+        <br />
+        <br />
+        <br />
+        <br />
+        <CreatePost />
+        <BottomNav />
+        <br />
+        <br />
+        <br />
+        <br />
+      </Route>
+
+      <Route path="/profile">
+        <br />
+        <br />
+        <br />
+        <br />
+        <Profile />
+        <BottomNav />
+        <br />
+        <br />
+        <br />
+        <br />
+      </Route>
+    </Switch>
+  )
+}
 
 function App() {
-  const [movies, setMovies] = useState([
-    {
-      title: '',
-      genre: '',
-      year: ''
-    }
-  ])
-
-  const [movie, setMovie] = useState(
-    {
-      title: '',
-      genre: '',
-      year: ''
-    }
-  )
-
-  useEffect(() => {
-    fetch('/movies').then(res => {
-      if(res.ok) {
-        return res.json()
-      }
-    }).then(jsonRes => setMovies(jsonRes))
-  })
-
-  function handleChange(e) {
-    const {name, value} = e.target;
-    setMovie(prevInput => {
-      return(
-        {
-          ...prevInput,
-          [name]: value
-        }
-      )
-    })
-  }
-
-  function addMovie(e) {
-    e.preventDefault();
-    alert("movie added");
-    const newMovie = {
-      title: movie.title,
-      genre: movie.genre,
-      year: movie.year
-    }
-
-    axios.post('/newmovie', newMovie);
-  }
-
-  function deleteMovie(id) {
-    axios.delete('/delete/' + id);
-    alert("movie deleted");
-  }
-
+  const [state,dispatch] = useReducer(reducer,initialState)
   return (
-    <div className="App">
-      <h1>Add Movie</h1>
-      <form>
-        <input onChange={handleChange} name="title" value={movie.title}></input>
-        <input onChange={handleChange} name="genre" value={movie.genre}></input>
-        <input onChange={handleChange} name="year" value={movie.year}></input>
-        <button onClick={addMovie}>ADD MOVIE</button>
-      </form>
-
-      {movies.map(movie => {
-        return (
-          <div>
-            <h1>{movie.title}</h1>
-            <p>{movie.genre}</p>
-            <p>{movie.year}</p>
-            <button onClick={() => deleteMovie(movie._id)}>DELETE</button>
-          </div>
-        ) 
-      })}
-    </div>
+    <UserContext.Provider value={{state,dispatch}}>
+    <BrowserRouter>
+      <NavBar />
+      <Routing />
+      
+    </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 

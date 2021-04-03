@@ -1,38 +1,514 @@
-.App {
-  text-align: center;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Kaushan Script', cursive;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */       
+    -webkit-tap-highlight-color:  transparent; 
+}
+body{
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */   
+  -webkit-tap-highlight-color:  transparent; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+img {
+    -drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+/* For Header Styling */
+header{
+    width: 100%;
+    height: 10vh;
+    max-height: 10vh;
+    min-height: 10vh;
+    background-color: white;
+    display: flex;
+    border: none;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 1px 1px 10px gray;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 20000000;
+}
+.title{
+    width: 60%;
+}
+.title h1 a {
+    text-decoration: none;
+    color: black;
+}
+h1{
+    margin-left: 20px;
+}
+.username{
+    width: 40%;
+    color: orange;
+    float: right;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.username h3{
+    margin-right: 20px;
+    text-decoration: none;
+    color: orange;
+}
+.username h3 a{
+    /* margin-right: 20px; */
+    text-decoration: none;
+    color: orange;
+}
+/* For Header Styling */
+
+
+
+/* for footer information */
+footer{
+    width: 100%;
+    height: 120vh;
+    background-color: white;
+    margin-top: -12%;
+    border: none;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: -1px -1px 10px rgb(37, 37, 37);
+    animation: footer 1s 1;
+}
+@keyframes footer {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+/* Log in signup button styling */
+.user-credential{
+    width: 100%;
+    height: 20vh;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;align-items: center;
+}
+.user-credential button{
+    margin: auto;
+    width: 160px;
+    height: 39px;
+    background-color: black;
+    outline: none;
+    border: none;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    color: white;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.log-btn{
+    margin: auto;
+}
+/* Log in signup button styling */
+
+/* other information related to website's styling */
+
+.bio {
+    width: 100%;
+    height: 10vh;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(251, 251, 251, 0.644);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.credentialhash {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    color: gray;
+    font-size: 16px;
+    background-color: transparent;
 }
 
-.App-link {
-  color: #61dafb;
+.info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.651);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tutorial {
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+
 }
+
+.about-section {
+    width: 100%;
+    height: 30vh;
+    background-color: #dedede;
+    color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.about-section p {
+    width: 80%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+/* other information related to website's styling */
+
+/* for footer information */
+
+
+
+/* For banner styling */
+.banner-img{
+    background-image: url('./img/bg.jpg');
+    width: 100%;
+    height: 70vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;align-items: center;
+}
+.intro {
+    width: 100%;
+    height: 10vh;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 100;
+    margin-top: 200px;
+    color: white;
+    animation: intro 3s infinite;
+    /* animation-delay: s; */
+}
+
+@keyframes intro {
+    0% {
+        transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(-100px);
+        color: transparent;
+    }
+
+}
+
+/* For banner styling */
+
+
+/* For Signup Page Styling */
+.signup-main{
+    width: 100%;
+    height: 79vh;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;align-items: center;
+    position: unset;
+    
+}
+
+.signup-main form{
+    display: flex;
+    flex-direction: column;
+}
+.already-have-an-acc{
+    margin: auto;
+}
+.signup-main input{
+    width: 240px;
+    height: 45px;
+    min-height: 45px;
+    margin: auto 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    outline: none;
+    text-align: center;
+    font-size: 18px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.signup-main input:focus{
+    border: 2px solid orange;
+    height: 45px;
+}
+.gender-select{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+.gender-btn{
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.gender-select p{
+    margin-right: 10px;
+}
+.signup-btn{
+    margin: auto;
+    width: 150px;
+    height: 35px;
+    min-height: 35px;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+}
+.extra-div{
+    width: 100%;
+    height: 19vh;
+    min-height: 19vh;
+    display: flex;
+    justify-content: center;align-items: center;
+    margin-top: 1000px;
+}
+.extra-img{
+    width: 22%;
+    
+}
+/* For Signup Page Styling */
+
+
+
+
+/* For All Posts Styling */
+
+/* For Single Post Styling */
+.mainpost{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 255px;
+}
+.post{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 10vh;
+    max-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    transition: all 1s;
+}
+.post img{
+    width: 100%;
+}
+.user_name{
+    width: 90%;
+   height: 8vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.user_name h3 img{
+    width: 7%;
+    margin: auto;
+}
+.user-showing-pic{
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px ;
+    z-index: 100;
+    position: relative;
+}
+.user-captions{
+    width: 100%;
+    height: 100%;
+    max-height: 100px;
+    min-height: 100px;
+    margin-top: -40px;
+    background-color: transparent;
+    display: flex;justify-content: center;align-items: center;
+    flex-direction: row;
+    
+}
+.user-captions-1{
+    display: flex;justify-content: center;align-items: center;
+    width: 90%;
+    height: 100%;
+    max-height: 100px;
+    min-height: 100px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px;
+    z-index: 100;
+    max-width: 250px;
+}
+.user-captions-2{
+    
+    
+}
+.action_center{
+    width: 30%;
+    height: 11rem;
+    background-color: rgba(197, 0, 0, 0);
+    border: none;
+    border-radius: 30px;
+    filter: blur(.1px);
+    margin-left: -76px;
+    z-index: 212;
+    transition: all .5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;align-content: inherit;
+}
+.action_center:hover{
+    background-color: rgba(209, 209, 209, 0.527);
+}
+.post:hover ~ .action_center{
+    background-color: rgba(209, 209, 209, 0.527);
+}
+.post:hover ~ .action_center img{
+    filter: opacity(1);
+    width: 42%;
+    height: 18%;
+}
+
+.action_center img{
+    width: 21%;
+    height: 9%;
+    margin: auto;
+    /* filter: opacity(0); */
+    transition: all .6s ease-in-out;
+}
+#action-img1:hover{
+    width: 42%;
+    height: 18%;
+}
+#action-img2:hover{
+    width: 42%;
+    height: 18%;
+}
+#action-img3:hover{
+    width: 42%;
+    height: 18%;
+}
+/* For Single Post Styling */
+
+/* For Navigation bar Styling to fix it in bottom always */
+nav{
+    width: 90%;
+    height: 10vh;
+    position:fixed;
+    bottom:8px;
+    left:0;
+    right:0; 
+    z-index:1000;
+    background-color: white;
+    margin: auto;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 2px 7px grey;
+    display: flex;
+}
+nav a{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    max-width: 43px;
+      
+}
+nav img{
+    margin: auto;
+    width: 100%;
+    max-width: 43px;
+}
+.home-image{
+    width: 180%;
+}
+
+
+/* For Dms Styling */
+
+.dm{
+    width: 90%;
+    height: 12vh;
+    /* background-color: red; */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 2px 10px gray;
+    margin: 10px auto;
+    display: flex;justify-content: center;align-items: center;flex-direction: row;
+
+}
+.profile-pic{
+    width: 30%;
+    height: 12vh;
+    display: flex;justify-content: center;align-items: center;
+}
+.profile-pic img{
+    width: 50px;
+
+}
+.dm-info{
+    width: 50%;
+    height: 12vh;
+    display: flex;justify-content: center;flex-direction: column;
+}
+
+
+
+.notify{
+    width: 20%;
+    height: 12vh;
+    display: flex;justify-content: center;align-items: center;
+}
+.notify-circle{
+    width: 20px;
+    height: 20px;
+    background-color: orange;
+    border-radius: 50%;
+    display: flex;justify-content: center;align-items: center;
+    font-weight: 800;
+}
+/* For Dms Styling */
