@@ -31,7 +31,8 @@ app.use(require('./routes/post'));
 
 
 app.get("/", (req, res) =>{
-    res.send("Hello From The Harsh")
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+
     
 })
 
