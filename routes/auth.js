@@ -11,9 +11,7 @@ const requireLogin = require('../middleware/requireLogin')
 //     res.send("Hello User")
 // })
 
- router.get('/', (req,res)=>{
-     res.send("Hello")
- })
+
 
  router.post('/signup', (req,res)=>{
      const {name, email, password, gender} = req.body
